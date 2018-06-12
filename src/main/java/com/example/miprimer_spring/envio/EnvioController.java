@@ -22,6 +22,7 @@ public class EnvioController {
     private IEnvioPaquete envioPaquete;
 
     public EnvioController(IEnvioPaquete terrestre){ //este constructor es lo mismo que el autowrirer para la injeccin de dependencia en este caso envioPaquete toma la forma de terrestre
+
         this.envioPaquete = terrestre;
     }
 
@@ -31,10 +32,10 @@ public class EnvioController {
     @Autowired
     private IEnvioPaquete aereo;
 
-    /*
+
     @Autowired
     private IEnvioPaquete terrestre;
-    */
+
 
     @RequestMapping("/aer")
     @ResponseBody
@@ -46,8 +47,15 @@ public class EnvioController {
     @RequestMapping("/terr")
     @ResponseBody
     public String terr(){
-        envioPaquete.enviar("Mary","Miami");
+        terrestre.enviar("Mary","Miami");
         return "Enviado de forma terrestre";
+    }
+
+    @RequestMapping("/envio")
+    @ResponseBody
+    public String envio(){
+        envioPaquete.enviar("Mary","Miami");
+        return "Enviado de cualquier forma";
     }
 
 

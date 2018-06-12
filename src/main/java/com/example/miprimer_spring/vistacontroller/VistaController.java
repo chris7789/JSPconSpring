@@ -10,7 +10,7 @@ public class VistaController {
 
 
     @RequestMapping("/saludo")
-    @ResponseBody
+
         public String saludo(){
         return "hola";
 
